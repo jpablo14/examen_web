@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Herramientas</title>
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="./css/Herramientas.css">
+
+
+	</head>
+	<body>
+		<!--========================================================== -->
+                        <!-- ENCABEZADO -->
+  <!--========================================================== -->
+	<style>
+		/* Estilos para el header */
+		header {
+			background-color: rgba(255, 244, 244, 0.671); /* Color de fondo */
+			height: 80px; /* Altura del header */
+			display: block; /* Convertir el header en un contenedor flexible */
+			align-items: center; /* Alinear verticalmente los elementos dentro del header */
+			justify-content: center; /* Alinear horizontalmente los elementos dentro del header */
+		}
+		
+		/* Estilos para el logo */
+		.logo {
+			height: 50px; /* Altura del logo */
+			width: 150px; /* Ancho del logo */
+		}
+
+		/* Estilos para el carrito */
+		.carritoicono {
+			height: 50px; /* Altura del logo */
+			width: 50px; /* Ancho del logo */
+			margin-left: 20px; /* margen*/
+		}
+
+
+	</style>
+
+
+<!-- Header -->
+<a href="index.html" style="text-align: center; display: block; background-color: rgba(255, 244, 244, 0.671);">
+  <img src="img/logo.gif" alt="Logo de mi empresa" class="logo">
+</a>
+
+<nav  class="navbar navbar-expand-lg navbar-light p-3 bg-success"  id="menu"> 
+	<div class="container">
+	  <a class="navbar-brand" href="Productos.html">
+		  <span class="fs-5 text-white fw-bold">Plantas</span>
+	  </a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		  <li class="nav-item">
+			<a class="nav-link text-white" aria-current="page" href="Herramientas.html">Herramientas</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link text-white" href="Accesorios.html">Accesorios</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link text-white" href="Contacto.html">Contactanos</a>
+		  </li>
+		</ul>
+		<a href="login.html" >
+		<button class="btn btn-primary btn-primary-outline-success text-light" >Ingresar</button>
+	  	</a>
+			<div class="container-icon">
+				<a href="carritodecompras.html">
+					<img
+							src="img/carrito.ñ.png" 
+							alt="carritoicono" class="carritoicono"
+						/>
+					</a>
+				</svg>
+				</div>
+
+  </nav>
+
+		<div id="tablaProductos" class="container-card">
+		
+		</div>
+
+        <script src="index.js"></script>
+	</body>
+
+<!--========================================================== -->
+                        <!--FOOTER-->
+<!--========================================================== -->
+
+
+<footer class="w-100  d-flex  align-items-center justify-content-center flex-wrap">
+	<p class="fs-5 px-3  pt-3">PlantLife. &copy; Todos Los Derechos Reservados 2023.</p>
+	<div id="iconos" >
+		<a href="#"><i class="bi bi-facebook"></i></a>
+		<a href="#"><i class="bi bi-twitter"></i></a>
+		<a href="#"><i class="bi bi-instagram"></i></a>  
+	</div>
+  </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>   
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+ 
+
+		<!-- sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--- Mis scripts -->
+<!-- comunes  -->
+<script src="assets/comunes.js"></script>
+<script> 
+
+
+	//buscar los productos en la api
+	$(document).ready(function() {
+	  //addCard();
+	  getProductos();
+
+	});
+
+	getProductos = () => {
+	  $.ajax({
+		url: `${API_URL}/productos/`,
+		type: 'GET',
+		dataType: 'json',
+		success: function (data) {
+		  $.each(data, function (index, value) {
+			// Llenar la tabla
+			if(value.Categorias_id_categoria == 2) {
+				$("#tablaProductos").append(`<div class="card">
+					<figure>
+						<img
+							src="img/${value.nombre_producto}.jpg"
+							alt="producto"
+						/>
+					</figure>
+					<div class="card-body">
+						<a href="detalleProducto.html" class="product-link" data-id="${value.id_producto}">
+						<h2 class="text-center">${value.nombre_producto}</h2>
+						</a>
+						<p class="price">${value.valor}</p>
+						<button class="btn btn-primary btn-primary-outline-success text-light">Añadir al carrito</button>
+					</div>
+				</div>`
+			
+				);
+			}
+
+		  });
+		},
+		error: function (error) {
+		  Swal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: 'No se pudo obtener la lista de productos. Por favor, intenta nuevamente.'
+		  });
+		}
+	  });
+	};
+
+	$('body').on('click', '.product-link', function(e) {
+    e.preventDefault();
+    const productoID = $(this).data('id');
+
+    // Guardar el ID del producto en localStorage
+    localStorage.setItem('productoSeleccionado', productoID);
+
+    // Redirigir a la página detalleProducto.html
+    window.location.href = 'detalleProducto.html';
+  });
+</script>
+
+</html>
+
